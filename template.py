@@ -11,8 +11,10 @@ def dir_to_json(path):
 def json_to_dir(injson):
     injson = json.loads(injson)
     # make folder `template`
-    if os.path.exists("template"):
+    if os.path.exists("template") and os.name != "nt":
         os.system("rm -rf template")
+    elif os.path.exists("template") and os.name == "nt":
+        os.system("del template")
     os.mkdir("template")
     
     
